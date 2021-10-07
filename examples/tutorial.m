@@ -60,14 +60,19 @@ W{2,3} = tt_matrix([0  1  0  0; ...
 %%
 F1 = [3 3 3];
 F2 = [3 3 4];
+D12 = diag([0;0;1]);% in submodels 1 and 2 there is a single absorbing state
+D3 = diag([0;0;1;1]);% in submodel 3 we have 2 absorbing states
+absorbing_states = ktt_kron(tt_matrix(D12), ...
+                            tt_matrix(D12), ...
+                            tt_matrix(D3));
 %%
 % define initial probability and reward vectors
 %%
 pi0 = ktt_ej(sz, ones(1, n));
-r   = ktt_ones(sz) - ktt_ej(sz, F1) - ktt_ej(sz, F2);
+r   = round(ktt_ones(sz) - ktt_ej(sz, F1) - ktt_ej(sz, F2), 1.e-8);
 %%
 % evaluate the measures
 %%
 m = eval_measure('inv', pi0, r, R, W, 'debug', true, ...
 				 'algorithm', 'spantree', 'ttol', 1e-12,  ...
-				 'absorbing_states', F1);
+				 'absorbing_states', absorbing_states);
