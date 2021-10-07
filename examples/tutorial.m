@@ -54,17 +54,13 @@ W{2,2} = tt_matrix([0  l2  0; ...
 W{2,3} = tt_matrix([0  1  0  0; ...
                     0  0  0  0; ...
                     0  0  0  0; ...
-                    0  0  0  0]);
+                    0  0  0  1]);
 %%
 % define absorbing states of interest
 %%
-F1 = [3 3 3];
-F2 = [3 3 4];
-D12 = diag([0;0;1]);% in submodels 1 and 2 there is a single absorbing state
-D3 = diag([0;0;1;1]);% in submodel 3 we have 2 absorbing states
-absorbing_states = ktt_kron(tt_matrix(D12), ...
-                            tt_matrix(D12), ...
-                            tt_matrix(D3));
+F = [3 3 3];
+B = [3 3 4];
+absorbing_states =[F; B];
 %%
 % define initial probability and reward vectors
 %%
