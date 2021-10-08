@@ -7,6 +7,8 @@ timer = tic;
 expn = 8;
 expsums_method = 'sinc';
 
+n = size(pi0);
+
 max_full_size = 16000;
 
 DA = inv_computeDA(R, W, shift);
@@ -15,6 +17,9 @@ x0 = ttexpsummldivide(DA, -r, expn, ttol, expsums_method);
 Q = ktt_infgen(R, W, ttol);
 S = inv_computeS(R, W, Q, absorbing_states, shift, ttol);
 QS = round(Q - S, ttol);
+
+reg = norm(QS) * ttol * 1e2;
+QS = round(QS + reg * tt_eye(n), ttol);
 
 xx = amen_block_solve({ QS }, { r }, min(tol, 1e-8), ...
     'nswp', 1000, 'tol_exit', tol, 'kickrank', 2, ...

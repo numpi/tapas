@@ -75,7 +75,7 @@ tol = 1e-4;
 % evaluate the measures
 %%
 
-method = 'ament';
+method = 'gmres';
 
 MTTF = eval_measure('inv', pi0, r, R, W, 'debug', true, ...
 				    'algorithm', method, 'ttol', ttol,  ...
