@@ -7,20 +7,20 @@ cd ../tapas/
 setup
 cd examples/
 %%
-% set parameters
+% define the infinitesimal generator matrix implicitly
 %%
+k = 10; % number of copies of A1
+n = 2+k; % number of submodels
+%%
+% set parameters
 l1 = 8.333e-2;
 d2 = 8.333e-2;
 m1 = 0.5;
 m2 = 0.5;
 m3 = 0.5;
-d1 = 3;
+d1 = n/2;
 t3 = 1;
-%%
-% define the infinitesimal generator matrix implicitly
-%%
-k = 5; % number of copies of A1
-n = 2+k; % number of submodels
+%%%
 sz = [3*ones(1,n-1) 4]; % sizes of the submodels
 R = cell(1, n);
 W = cell(2, n);

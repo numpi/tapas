@@ -9,13 +9,13 @@ cd examples/
 %%
 % set parameters
 %%
-l1 = 0.5;
-l2 = 0.5;
-m1 = 1;
-m2 = 1;
-m3 = 1;
-d1 = 0.01;
-t3 = 0.1;
+l1 = 8.333e-2;
+d2 = 8.333e-2;
+m1 = 0.5;
+m2 = 0.5;
+m3 = 0.5;
+d1 = n/2;
+t3 = 1;
 %%
 % define the infinitesimal generator matrix implicitly
 %%
@@ -48,7 +48,7 @@ W{1,3} = tt_matrix([0  0  1  0; ...
 W{2,1} = tt_matrix([1  0  0; ...
                     0  1  0; ...
                     0  0  1]);
-W{2,2} = tt_matrix([0  l2  0; ...
+W{2,2} = tt_matrix([0  d2  0; ...
                     0  0   0; ...
                     0  0   0]);
 W{2,3} = tt_matrix([0  1  0  0; ...
