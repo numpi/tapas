@@ -44,6 +44,10 @@ switch algorithm
     case 'gmres'
         [m, time, y] = inv_gmres(pi0, r, R, W, absorbing_states, shift, ttol, tol);
         fprintf('m = %e (gmres), time = %f sec\n', m, time);
+        
+    case 'gmrest'
+        [m, time, y] = inv_gmrest(pi0, r, R, W, absorbing_states, shift, ttol, tol);
+        fprintf('m = %e (gmrest), time = %f sec\n', m, time);        
 		
 	otherwise
 		error('Unsupported algorithm');

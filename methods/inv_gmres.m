@@ -3,8 +3,11 @@ function [m, time, y] = inv_gmres(pi0, r, R, W, absorbing_states, shift, ttol, t
 
 k = length(R);
 
-QQ = ktt_infgen(R, W, ttol);
+[QQ, Delta] = ktt_infgen(R, W, ttol);
 [DA, scl, cnd] = inv_computeDA(R, W, shift);
+
+S = inv_computeS(R, W, Delta, absorbing_states, shift, ttol);
+QQ = round(QQ - S, ttol);
 
 b = r;
 
@@ -36,6 +39,9 @@ l = tt_gmres_block(...
     @(x,ttol) { round(expinv(QQ*x{1}), ttol) }, ...
     expinv(b), 1e-6, ...
     'restart', 1800, 'max_iters', 500, 'tol_exit', tol);
+
+l{1} = l{1};
+
 m = -dot(pi0, l{1});
 time = toc(timer);
 y = l{1};
