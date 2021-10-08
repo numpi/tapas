@@ -19,7 +19,7 @@ t3 = 0.1;
 %%
 % define the infinitesimal generator matrix implicitly
 %%
-k = 2; % number of copies of A1
+k = 8; % number of copies of A1
 n = 2+k; % number of submodels
 sz = [3*ones(1,n-1) 4]; % sizes of the submodels
 R = cell(1, n);
@@ -82,7 +82,7 @@ tol = 1e-4;
 % evaluate the measures
 %%
 
-method = 'spantree';
+method = 'ament';
 
 MTTF = eval_measure('inv', pi0, r, R, W, 'debug', true, ...
 				    'algorithm', method, 'ttol', ttol,  ...
