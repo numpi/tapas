@@ -9,17 +9,17 @@ cd examples/
 %%
 % set parameters
 %%
-l1 = 0.5;
-l2 = 0.5;
-m1 = 1;
-m2 = 1;
-m3 = 1;
-d1 = 0.01;
-t3 = 0.1;
+l1 = 8.333e-2;
+d2 = 8.333e-2;
+m1 = 0.5;
+m2 = 0.5;
+m3 = 0.5;
+d1 = 3;
+t3 = 1;
 %%
 % define the infinitesimal generator matrix implicitly
 %%
-k = 2; % number of copies of A1
+k = 5; % number of copies of A1
 n = 2+k; % number of submodels
 sz = [3*ones(1,n-1) 4]; % sizes of the submodels
 R = cell(1, n);
@@ -55,7 +55,7 @@ for j = 1 : k
                         0  1  0; ...
                         0  0  1]);
 end
-W{2,k+1} = tt_matrix([0  l2  0; ...
+W{2,k+1} = tt_matrix([0  d2  0; ...
                     0  0   0; ...
                     0  0   0]);
 W{2,k+2} = tt_matrix([0  1  0  0; ...
@@ -82,7 +82,7 @@ tol = 1e-4;
 % evaluate the measures
 %%
 
-method = 'spantree';
+method = 'amen';
 
 MTTF = eval_measure('inv', pi0, r, R, W, 'debug', true, ...
 				    'algorithm', method, 'ttol', ttol,  ...

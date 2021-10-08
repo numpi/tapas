@@ -53,7 +53,7 @@ while size(conditional_indices, 1) > 0
     time = time + time1 + time2;
 end
 
-% fprintf("prob is %f\n", m1);
+fprintf("prob is %f\n", m1);
 m = m2 / m1;
 			
 end
