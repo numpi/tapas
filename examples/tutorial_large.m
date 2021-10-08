@@ -1,3 +1,5 @@
+function [MTTF, CMTTF, CMTTB] = tutorial_large(k)
+
 %%
 % setup of both TT-Toolbox and TAPAS
 %%
@@ -9,16 +11,15 @@ cd examples/
 %%
 % define the infinitesimal generator matrix implicitly
 %%
-k = 10; % number of copies of A1
 n = 2+k; % number of submodels
 %%
 % set parameters
 l1 = 8.333e-2;
 d2 = 8.333e-2;
-m1 = 0.5;
-m2 = 0.5;
-m3 = 0.5;
-d1 = n/2;
+m1 = 8.333e-2;%0.5;
+m2 = 8.333e-2;%0.5;
+m3 = 8.333e-2;%0.5;
+d1 = 1;
 t3 = 1;
 %%%
 sz = [3*ones(1,n-1) 4]; % sizes of the submodels
@@ -82,7 +83,7 @@ tol = 1e-4;
 % evaluate the measures
 %%
 
-method = 'amen';
+method = 'amen';%'spantree'; %'gmres';
 
 MTTF = eval_measure('inv', pi0, r, R, W, 'debug', true, ...
 				    'algorithm', method, 'ttol', ttol,  ...
@@ -97,3 +98,4 @@ MTTF = eval_measure('inv', pi0, r, R, W, 'debug', true, ...
     				          'absorbing_states', absorbing_states, ...
 					          'conditional_indices', B, ...
 					          'ttol', ttol, 'tol', tol);
+end
