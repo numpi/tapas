@@ -10,7 +10,7 @@ S = inv_computeS(R, W, Delta, absorbing_states, shift, ttol);
 QQ = round(QQ - S, ttol);
 
 reg = norm(QQ) * ttol * 1e2;
-QQ = round(QQ + reg * tt_eye(n), ttol);
+QQ = round(QQ - reg * tt_eye(n), ttol);
 
 b = r;
 

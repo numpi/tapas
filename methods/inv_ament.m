@@ -13,7 +13,7 @@ QSt = round(Q - S, ttol)';
 
 % We regularize the system to avoid problems with singular Q
 reg = norm(QSt) * ttol * 1e2;
-QSt = round(QSt + reg * tt_eye(n(end:-1:1)), ttol);
+QSt = round(QSt - reg * tt_eye(n(end:-1:1)), ttol);
 
 max_full_size = 16000;
 
