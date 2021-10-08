@@ -6,7 +6,7 @@ function [m, time] = eval_cond_etta(pi0, R, W, absorbing_states, ...
 k = length(R);
 n = arrayfun(@(i) size(R{i}, 1), 1 : k);
 			
-Q = ktt_infgen(R, W);
+Q = ktt_infgen(R, W, ttol);
 
 if ~exist('batch_size', 'var')
     batch_size = inf;
@@ -53,6 +53,7 @@ while size(conditional_indices, 1) > 0
     time = time + time1 + time2;
 end
 
+% fprintf("prob is %f\n", m1);
 m = m2 / m1;
 			
 end
