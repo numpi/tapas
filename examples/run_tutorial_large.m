@@ -1,13 +1,17 @@
-mink = 5;
-maxk = 15;
-results = zeros(maxk-mink,3);
-for k = mink : maxk
-    [MTTF, CMTTF, CMTTB] = tutorial_large(k);
-    results(k-mink+1,1) = MTTF;
-    results(k-mink+1,2) = CMTTF;
-    results(k-mink+1,3) = CMTTB;
+minm = 5;
+maxm = 15;
+results = zeros(maxm-minm,3);
+for m = minm : maxm
+    [MTTF, CMTTF, CMTTB] = tutorial_large(m);
+    results(m-minm+1,1) = MTTF;
+    results(m-minm+1,2) = CMTTF;
+    results(m-minm+1,3) = CMTTB;
 end
 
-xlabel('k');
+slg=semilogy(minm:maxm,results(:,1),'--',minm:maxm,results(:,2),minm:maxm,results(:,3),'o');
+xlabel('m (number of copies of A1 in Figure 1)');
 ylabel('hours');
-plot(5:15,results(:,1));
+legend('MTTF','CMTTF','CMTTB','location','northwest');
+slg(1).Color = [0 0 0];
+slg(2).Color = [0 0 0];
+slg(3).Color = [0 0 0];
