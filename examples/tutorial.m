@@ -9,6 +9,8 @@ cd examples/
 %%
 % set parameters
 %%
+n = 3; % number of submodels
+
 l1 = 8.333e-2;
 d2 = 8.333e-2;
 m1 = 0.5;
@@ -19,7 +21,6 @@ t3 = 1;
 %%
 % define the infinitesimal generator matrix implicitly
 %%
-n = 3; % number of submodels
 sz = [3 3 4]; % sizes of the submodels
 R = cell(1, n);
 W = cell(2, n);
